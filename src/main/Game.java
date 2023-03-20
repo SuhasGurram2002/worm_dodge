@@ -29,8 +29,6 @@ public class Game extends JPanel implements Runnable {
 	public Thread thread;
 	private boolean running = false;
 	
-	private Color colors[] = {Color.red, Color.white, Color.magenta, Color.orange, Color.cyan, Color.blue, Color.lightGray, Color.pink, Color.yellow};
-	
 	private Worm worm;
 	private int wormSpeed = 2;
 	
@@ -49,20 +47,16 @@ public class Game extends JPanel implements Runnable {
 		
 		random = new Random();
 
-		int colorIndex = 0;
 		
 		for(int i = 0; i < balls.length; i++) {
 			int ballx = random.nextInt(WIDTH - 15 * 2);
 			int bally = random.nextInt(HEIGHT - 15 * 2);
 
-			if(colorIndex == 9)
-				colorIndex = 0;
 			
 			int balldx = random.nextInt(4) + 1;
 			int balldy = random.nextInt(4) + 1;
 			balls[i] = new Ball(ballx, bally, balldx, balldy);
-			balls[i].setColor(colors[colorIndex]);
-			colorIndex++;
+			balls[i].setColor(Color.red);
 		}
 		
 		setFocusable(true);
