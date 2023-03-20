@@ -79,7 +79,7 @@ public class Game extends JPanel implements Runnable {
 
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		graphics.setColor(Color.white);
+		graphics.setColor(Color.orange);
 		graphics.setFont(new Font("Consolas", Font.BOLD, 26));
 		if(!firstTime)
 			graphics.drawString("SCORE: " + (System.currentTimeMillis() - start), 10, 30);
