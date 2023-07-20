@@ -46,8 +46,8 @@ public class Worm {
 			}
 			
 			if(i < 20)
-				g.setColor(Color.white);
-			else g.setColor(Color.green);
+				g.setColor(Color.pink);
+			else g.setColor(Color.blue);
 			nodes.get(i).draw(g);
 
 			oldHeadX = previousNodeXPosition;
