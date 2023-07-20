@@ -29,6 +29,8 @@ public class Game extends JPanel implements Runnable {
 	public Thread thread;
 	private boolean running = false;
 	
+	//private Color colors[] = {Color.red, Color.white, Color.magenta, Color.orange, Color.cyan, Color.blue, Color.lightGray, Color.pink, Color.yellow};
+	
 	private Worm worm;
 	private int wormSpeed = 2;
 	
@@ -47,16 +49,21 @@ public class Game extends JPanel implements Runnable {
 		
 		random = new Random();
 
+		//int colorIndex = 0;
 		
 		for(int i = 0; i < balls.length; i++) {
 			int ballx = random.nextInt(WIDTH - 15 * 2);
 			int bally = random.nextInt(HEIGHT - 15 * 2);
 
+			/*if(colorIndex == 9)
+				colorIndex = 0;*/
 			
 			int balldx = random.nextInt(4) + 1;
 			int balldy = random.nextInt(4) + 1;
 			balls[i] = new Ball(ballx, bally, balldx, balldy);
+			//balls[i].setColor(colors[colorIndex]);
 			balls[i].setColor(Color.red);
+			//colorIndex++;
 		}
 		
 		setFocusable(true);
@@ -72,9 +79,7 @@ public class Game extends JPanel implements Runnable {
 	public void paintComponent(Graphics g) {
 		Graphics2D graphics = (Graphics2D) g;
 
-		//*****************************TURN ON ANTIALIASING******************************************
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		//*******************************************************************************************
 
 
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
@@ -86,7 +91,7 @@ public class Game extends JPanel implements Runnable {
 		else
 			graphics.drawString("SCORE: 0", 10, 30);
 
-		graphics.setColor(Color.green);
+		graphics.setColor(Color.blue);
 		worm.draw(wormX, wormY, graphics);
 		for(int i = 0; i < balls.length; i++) {
 			balls[i].draw(balls[i].x, balls[i].y, graphics);
@@ -191,6 +196,7 @@ public class Game extends JPanel implements Runnable {
 				balls[i].y = random.nextInt(HEIGHT - balls[i].radius * 2);
 
 				System.out.println("Collided with ball " + score);
+				balls[i].toggleColor();
 			}
 			
 		}
