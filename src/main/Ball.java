@@ -9,6 +9,7 @@ public class Ball {
 	public int x, y;
 	public int dx, dy;
 	private Color color;
+	private boolean isGreen = false;
 	
 	public Ball(int x, int y, int dx, int dy) {
 		this.x = x;
@@ -17,7 +18,16 @@ public class Ball {
 		this.dy = dy;
 	}
 	
+	public void toggleColor() {
+        isGreen = !isGreen;
+    }
+	
 	public void draw(int x, int y, Graphics2D g) {
+		if (isGreen) {
+            color = Color.green;
+        } else {
+            color = Color.red;
+        }
 		g.setColor(color);
 		g.fillOval(x, y, radius * 2, radius * 2);
 		this.x = x;
